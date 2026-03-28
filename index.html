@@ -44,7 +44,7 @@
             }
           },
           backgroundImage: {
-            'hero-gradient': 'linear-gradient(135deg, rgba(6,15,30,0.92) 0%, rgba(11,31,58,0.85) 50%, rgba(26,58,107,0.75) 100%)',
+            'hero-gradient': 'linear-gradient(135deg, rgba(6,15,30,0.95) 0%, rgba(11,31,58,0.8) 50%, rgba(6,15,30,0.95) 100%)',
           },
           animation: {
             'fade-in-up':  'fadeInUp 0.7s ease-out both',
@@ -222,6 +222,21 @@
     .card-lift:hover .service-icon-wrap {
       transform: scale(1.12) rotate(-4deg);
     }
+
+    /* Lightning Container */
+    #lightning-container {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+      background: #050510;
+    }
+    .hero-content {
+      position: relative;
+      z-index: 10;
+    }
   </style>
 </head>
 
@@ -277,972 +292,633 @@
           <a href="tel:+39XXXXXXXXXX"
              class="flex items-center gap-2 px-4 py-2.5 rounded-xl font-bold text-sm text-brand-dark transition-all duration-200 hover:scale-105 active:scale-95"
              style="background: linear-gradient(135deg, #F59E0B, #EA580C); box-shadow: 0 4px 20px rgba(245,158,11,0.4);">
-            <i class="fas fa-phone-alt text-xs animate-bounce-slow"></i>
+            <i class="fas fa-phone-alt"></i>
             <span class="hidden sm:inline">Chiama Ora</span>
-            <span class="sm:hidden">Chiama</span>
           </a>
 
-          <!-- HAMBURGER MOBILE -->
-          <button id="menu-btn"
-                  class="lg:hidden flex flex-col justify-center items-center w-9 h-9 gap-1.5 rounded-lg hover:bg-white/10 transition-colors"
-                  aria-label="Apri menu">
-            <span class="menu-bar block w-5 h-0.5 bg-white transition-all duration-300"></span>
-            <span class="menu-bar block w-5 h-0.5 bg-white transition-all duration-300"></span>
-            <span class="menu-bar block w-5 h-0.5 bg-white transition-all duration-300"></span>
+          <!-- MOBILE MENU BUTTON -->
+          <button id="mobile-menu-button" class="lg:hidden text-white p-2 focus:outline-none">
+            <i class="fas fa-bars text-2xl"></i>
           </button>
         </div>
       </div>
     </div>
 
-    <!-- MENU MOBILE -->
-    <div id="mobile-menu"
-         class="lg:hidden hidden border-t border-white/10"
-         style="background: rgba(6,15,30,0.98);">
-      <nav class="flex flex-col px-4 py-4 gap-1">
-        <a href="#servizi"    class="text-slate-300 hover:text-brand-yellow hover:bg-white/5 px-4 py-3 rounded-lg text-sm font-medium transition-all" onclick="closeMobileMenu()">Servizi</a>
-        <a href="#perche-noi" class="text-slate-300 hover:text-brand-yellow hover:bg-white/5 px-4 py-3 rounded-lg text-sm font-medium transition-all" onclick="closeMobileMenu()">Chi Siamo</a>
-        <a href="#recensioni" class="text-slate-300 hover:text-brand-yellow hover:bg-white/5 px-4 py-3 rounded-lg text-sm font-medium transition-all" onclick="closeMobileMenu()">Recensioni</a>
-        <a href="#contatti"   class="text-slate-300 hover:text-brand-yellow hover:bg-white/5 px-4 py-3 rounded-lg text-sm font-medium transition-all" onclick="closeMobileMenu()">Contatti</a>
-        <!-- MODIFICA: Sostituisci +39XXXXXXXXXX con il tuo numero -->
-        <a href="tel:+39XXXXXXXXXX"
-           class="flex items-center justify-center gap-2 mt-2 py-3 rounded-xl font-bold text-sm text-brand-dark"
-           style="background: linear-gradient(135deg, #F59E0B, #EA580C);">
-          <i class="fas fa-phone-alt"></i> Chiama Ora
-        </a>
-      </nav>
+    <!-- MENU MOBILE (Hidden by default) -->
+    <div id="mobile-menu" class="hidden lg:hidden bg-brand-navy border-t border-slate-800">
+      <div class="px-4 pt-2 pb-6 space-y-1">
+        <a href="#servizi"    class="block px-3 py-4 text-slate-300 font-medium border-b border-slate-800">Servizi</a>
+        <a href="#perche-noi" class="block px-3 py-4 text-slate-300 font-medium border-b border-slate-800">Chi Siamo</a>
+        <a href="#recensioni" class="block px-3 py-4 text-slate-300 font-medium border-b border-slate-800">Recensioni</a>
+        <a href="#contatti"   class="block px-3 py-4 text-slate-300 font-medium">Contatti</a>
+      </div>
     </div>
   </header>
 
-
   <!-- ============================================================
-       HERO SECTION
+       HERO SECTION WITH LIGHTNING EFFECT
        ============================================================ -->
-  <section id="home"
-           class="relative min-h-screen flex items-center justify-center overflow-hidden hero-pattern"
-           style="background-color: #060F1E;">
+  <section id="home" class="relative min-h-screen flex items-center pt-20 overflow-hidden">
+    <!-- Lightning Effect Container -->
+    <div id="lightning-container"></div>
 
-    <!-- Immagine di sfondo -->
-    <!-- MODIFICA: Sostituisci l'URL con una tua immagine se necessario -->
-    <div class="absolute inset-0 z-0">
-      <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069"
-           alt="Elettricista al lavoro"
-           class="w-full h-full object-cover object-center"
-           loading="eager" />
-      <!-- Overlay gradiente -->
-      <div class="absolute inset-0" style="background: linear-gradient(135deg, rgba(6,15,30,0.95) 0%, rgba(11,31,58,0.88) 45%, rgba(26,58,107,0.70) 100%);"></div>
-      <!-- Overlay pattern -->
-      <div class="absolute inset-0 hero-pattern opacity-40"></div>
-    </div>
+    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-20 hero-content">
+      <div class="grid lg:grid-cols-2 gap-12 items-center">
+        <div class="text-center lg:text-left animate-fade-in-up">
+          <div class="badge mb-6">
+            <i class="fas fa-check-circle"></i>
+            Tecnici Certificati e Abilitati
+          </div>
+          <!-- MODIFICA: Cambia "[TUA CITTÀ]" con la tua città -->
+          <h1 class="text-4xl md:text-6xl font-black text-white leading-[1.1] mb-6">
+            Pronto Intervento <br/>
+            <span class="text-gradient">Elettricista H24</span> <br/>
+            a <span class="text-white">Milano</span>
+          </h1>
+          <p class="text-lg md:text-xl text-slate-300 mb-10 max-w-xl mx-auto lg:mx-0 font-light leading-relaxed">
+            Risolviamo guasti elettrici in tempi record. Professionalità, sicurezza e trasparenza al tuo servizio per impianti civili e industriali.
+          </p>
 
-    <!-- Contenuto Hero -->
-    <div class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pt-28 pb-20 text-center lg:text-left">
-      <div class="max-w-3xl">
+          <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            <a href="#contatti" class="w-full sm:w-auto bg-brand-yellow hover:bg-brand-orange text-brand-dark px-10 py-4 rounded-xl font-bold text-lg transition-all shadow-cta hover:shadow-cta-lg flex items-center justify-center gap-2">
+              Richiedi Preventivo
+            </a>
+            <a href="https://wa.me/39XXXXXXXXXX" class="w-full sm:w-auto bg-white/10 hover:bg-white/20 text-white border border-white/30 px-10 py-4 rounded-xl font-bold text-lg transition-all backdrop-blur-sm flex items-center justify-center gap-2">
+              <i class="fab fa-whatsapp text-xl"></i>
+              Scrivici Ora
+            </a>
+          </div>
 
-        <!-- Badge superiore -->
-        <div class="animate-fade-in-up delay-100 inline-flex items-center gap-2 mb-6">
-          <span class="badge">
-            <i class="fas fa-shield-alt text-xs"></i>
-            Certificati e Assicurati
-          </span>
-          <span class="badge">
-            <i class="fas fa-star text-xs"></i>
-            4.9/5 su Google
-          </span>
-        </div>
-
-        <!-- Titolo principale -->
-        <!-- MODIFICA: Cambia "[TUA CITTÀ]" con la città in cui operi -->
-        <h1 class="animate-fade-in-up delay-200 text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-black text-white leading-tight tracking-tight mb-6">
-          Pronto Intervento<br />
-          <span class="text-gradient">Elettricista</span><br />
-          a <span class="text-white">Milano</span>
-        </h1>
-
-        <!-- Sottotitolo -->
-        <p class="animate-fade-in-up delay-300 text-lg sm:text-xl text-slate-300 leading-relaxed mb-10 max-w-2xl">
-          Risolviamo guasti elettrici in tempi record. Professionalità, sicurezza e trasparenza al tuo servizio — <strong class="text-white">24 ore su 24, 7 giorni su 7.</strong>
-        </p>
-
-        <!-- CTA Buttons -->
-        <div class="animate-fade-in-up delay-400 flex flex-col sm:flex-row gap-4 justify-center lg:justify-start mb-12">
-          <a href="#contatti"
-             class="group flex items-center justify-center gap-3 px-8 py-4 rounded-2xl font-bold text-lg text-brand-dark transition-all duration-300 hover:scale-105 active:scale-95"
-             style="background: linear-gradient(135deg, #F59E0B, #EA580C); box-shadow: 0 8px 32px rgba(245,158,11,0.55);">
-            <i class="fas fa-file-invoice text-base group-hover:rotate-6 transition-transform"></i>
-            Richiedi Preventivo
-          </a>
-          <!-- MODIFICA: Sostituisci +39XXXXXXXXXX con il tuo numero WhatsApp -->
-          <a href="https://wa.me/39XXXXXXXXXX?text=Ciao!%20Vorrei%20un%20preventivo."
-             target="_blank"
-             rel="noopener"
-             class="group flex items-center justify-center gap-3 px-8 py-4 rounded-2xl font-bold text-lg text-white border-2 border-white/20 backdrop-blur-sm transition-all duration-300 hover:border-green-400 hover:bg-green-400/10 hover:scale-105 active:scale-95">
-            <i class="fab fa-whatsapp text-xl text-green-400 group-hover:scale-110 transition-transform"></i>
-            Scrivici su WhatsApp
-          </a>
-        </div>
-
-        <!-- Mini statistiche -->
-        <div class="animate-fade-in-up delay-500 flex flex-wrap gap-6 justify-center lg:justify-start">
-          <div class="flex items-center gap-3">
-            <div class="flex items-center justify-center w-10 h-10 rounded-full bg-brand-yellow/10 border border-brand-yellow/20">
-              <i class="fas fa-clock text-brand-yellow text-sm"></i>
+          <!-- Stats -->
+          <div class="mt-16 grid grid-cols-3 gap-4 max-w-md mx-auto lg:mx-0">
+            <div class="text-center lg:text-left">
+              <div class="stat-number">60'</div>
+              <div class="text-slate-400 text-[10px] uppercase tracking-widest font-bold">Intervento</div>
             </div>
-            <div>
-              <div class="text-white font-bold text-sm">Intervento in</div>
-              <div class="text-brand-yellow font-black text-lg leading-tight">60 min</div>
+            <div class="text-center lg:text-left border-x border-slate-800">
+              <div class="stat-number">1500+</div>
+              <div class="text-slate-400 text-[10px] uppercase tracking-widest font-bold">Clienti</div>
+            </div>
+            <div class="text-center lg:text-left">
+              <div class="stat-number">15</div>
+              <div class="text-slate-400 text-[10px] uppercase tracking-widest font-bold">Anni Exp</div>
             </div>
           </div>
-          <div class="w-px bg-white/10 hidden sm:block"></div>
-          <div class="flex items-center gap-3">
-            <div class="flex items-center justify-center w-10 h-10 rounded-full bg-brand-yellow/10 border border-brand-yellow/20">
-              <i class="fas fa-users text-brand-yellow text-sm"></i>
-            </div>
-            <div>
-              <div class="text-white font-bold text-sm">Clienti</div>
-              <div class="text-brand-yellow font-black text-lg leading-tight">+1.500</div>
-            </div>
+        </div>
+
+        <!-- Hero Visual Element -->
+        <div class="hidden lg:block relative animate-fade-in delay-300">
+          <div class="relative z-10 rounded-3xl overflow-hidden shadow-2xl border border-slate-800">
+            <img src="https://images.unsplash.com/photo-1621905251189-08b45d6a269e?q=80&w=2069"
+                 alt="Elettricista al lavoro"
+                 class="w-full h-[500px] object-cover opacity-80" />
+            <div class="absolute inset-0 bg-gradient-to-t from-brand-dark via-transparent to-transparent"></div>
           </div>
-          <div class="w-px bg-white/10 hidden sm:block"></div>
-          <div class="flex items-center gap-3">
-            <div class="flex items-center justify-center w-10 h-10 rounded-full bg-brand-yellow/10 border border-brand-yellow/20">
-              <i class="fas fa-calendar-check text-brand-yellow text-sm"></i>
-            </div>
-            <div>
-              <div class="text-white font-bold text-sm">Anni di</div>
-              <div class="text-brand-yellow font-black text-lg leading-tight">Esperienza 15+</div>
+          <!-- Floating Badge -->
+          <div class="absolute -bottom-6 -left-6 bg-white p-6 rounded-2xl shadow-2xl animate-bounce-slow">
+            <div class="flex items-center gap-4">
+              <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                <i class="fas fa-shield-alt text-green-600 text-xl"></i>
+              </div>
+              <div>
+                <div class="text-brand-dark font-black text-lg">Garantito</div>
+                <div class="text-slate-500 text-xs">Lavori Certificati</div>
+              </div>
             </div>
           </div>
         </div>
       </div>
     </div>
 
-    <!-- Scroll indicator -->
-    <div class="absolute bottom-8 left-1/2 -translate-x-1/2 z-10 animate-bounce-slow">
-      <a href="#perche-noi" aria-label="Scorri in basso">
-        <div class="flex flex-col items-center gap-1">
-          <span class="text-white/40 text-xs tracking-widest uppercase font-medium">Scopri</span>
-          <i class="fas fa-chevron-down text-brand-yellow text-lg"></i>
-        </div>
+    <!-- Scroll Down Indicator -->
+    <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 animate-bounce-slow">
+      <a href="#servizi" class="text-white/20 hover:text-brand-yellow transition-colors">
+        <i class="fas fa-chevron-down text-2xl"></i>
       </a>
     </div>
   </section>
 
-
   <!-- ============================================================
-       PERCHÉ SCEGLIERCI (Punti di forza)
+       I NOSTRI SERVIZI (Griglia)
        ============================================================ -->
-  <section id="perche-noi" class="py-20 lg:py-28" style="background: #0B1F3A;">
+  <section id="servizi" class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-      <!-- Intestazione sezione -->
-      <div class="text-center mb-16 reveal">
-        <p class="text-brand-yellow font-semibold text-sm tracking-widest uppercase mb-3">Il Nostro Impegno</p>
-        <h2 class="section-title text-3xl sm:text-4xl lg:text-5xl font-black text-white">
-          Perché Scegliere Noi
-        </h2>
-        <p class="mt-6 text-slate-400 text-lg max-w-2xl mx-auto">
-          Siamo il punto di riferimento per l'elettricità nella tua città. Ecco cosa ci distingue dalla concorrenza.
-        </p>
+      <div class="text-center mb-20 reveal">
+        <h2 class="text-3xl md:text-5xl font-black text-brand-navy mb-4 section-title">Servizi Professionali</h2>
+        <p class="text-slate-500 font-medium">Soluzioni complete per ogni esigenza elettrica</p>
       </div>
 
-      <!-- Grid 3 colonne -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
-        <!-- Card 1: Intervento Rapido -->
-        <div class="reveal card-lift relative rounded-2xl p-8 text-center border border-white/5"
-             style="background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));">
-          <div class="service-icon-wrap inline-flex items-center justify-center w-20 h-20 rounded-2xl mb-6 mx-auto"
-               style="background: linear-gradient(135deg, rgba(245,158,11,0.15), rgba(234,88,12,0.15)); border: 1px solid rgba(245,158,11,0.25);">
-            <i class="fas fa-bolt text-brand-yellow text-3xl"></i>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-8">
+        <!-- Servizio 1 -->
+        <div class="bg-brand-gray p-8 rounded-3xl card-lift reveal delay-100 relative overflow-hidden">
+          <div class="service-icon-wrap w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm">
+            <i class="fas fa-search text-brand-light text-2xl"></i>
           </div>
-          <h3 class="text-white font-bold text-xl mb-3">Intervento Rapido</h3>
-          <p class="text-slate-400 leading-relaxed">
-            Garantiamo l'arrivo sul posto entro <strong class="text-white">60 minuti</strong> dalla chiamata per le emergenze. Siamo operativi 24/7, anche nei festivi.
-          </p>
-          <div class="mt-6 pt-6 border-t border-white/5">
-            <span class="text-brand-yellow font-black text-2xl">60 min</span>
-            <span class="text-slate-500 text-sm ml-1">tempo medio</span>
-          </div>
+          <h3 class="text-xl font-bold mb-3">Ricerca Guasti</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">Individuazione rapida di cortocircuiti, dispersioni e malfunzionamenti dell'impianto.</p>
+          <div class="ribbon">Urgente</div>
         </div>
 
-        <!-- Card 2: Preventivi Trasparenti -->
-        <div class="reveal card-lift relative rounded-2xl p-8 text-center border border-brand-yellow/20"
-             style="background: linear-gradient(145deg, rgba(245,158,11,0.08), rgba(234,88,12,0.04));">
-          <div class="ribbon">Top Rated</div>
-          <div class="service-icon-wrap inline-flex items-center justify-center w-20 h-20 rounded-2xl mb-6 mx-auto"
-               style="background: linear-gradient(135deg, rgba(245,158,11,0.20), rgba(234,88,12,0.20)); border: 1px solid rgba(245,158,11,0.35);">
-            <i class="fas fa-file-invoice-dollar text-brand-yellow text-3xl"></i>
+        <!-- Servizio 2 -->
+        <div class="bg-brand-gray p-8 rounded-3xl card-lift reveal delay-200">
+          <div class="service-icon-wrap w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm">
+            <i class="fas fa-home text-brand-light text-2xl"></i>
           </div>
-          <h3 class="text-white font-bold text-xl mb-3">Preventivi Trasparenti</h3>
-          <p class="text-slate-400 leading-relaxed">
-            Nessuna sorpresa in fattura. Il preventivo è <strong class="text-white">gratuito, dettagliato e vincolante</strong>. Saprai esattamente quanto spenderai prima di iniziare.
-          </p>
-          <div class="mt-6 pt-6 border-t border-white/10">
-            <span class="text-brand-yellow font-black text-2xl">100%</span>
-            <span class="text-slate-500 text-sm ml-1">trasparenza</span>
-          </div>
+          <h3 class="text-xl font-bold mb-3">Impianti Civili</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">Progettazione, installazione e manutenzione di impianti elettrici per abitazioni e condomini.</p>
         </div>
 
-        <!-- Card 3: Personale Qualificato -->
-        <div class="reveal card-lift relative rounded-2xl p-8 text-center border border-white/5"
-             style="background: linear-gradient(145deg, rgba(255,255,255,0.05), rgba(255,255,255,0.02));">
-          <div class="service-icon-wrap inline-flex items-center justify-center w-20 h-20 rounded-2xl mb-6 mx-auto"
-               style="background: linear-gradient(135deg, rgba(245,158,11,0.15), rgba(234,88,12,0.15)); border: 1px solid rgba(245,158,11,0.25);">
-            <i class="fas fa-user-shield text-brand-yellow text-3xl"></i>
+        <!-- Servizio 3 -->
+        <div class="bg-brand-gray p-8 rounded-3xl card-lift reveal delay-300">
+          <div class="service-icon-wrap w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm">
+            <i class="fas fa-industry text-brand-light text-2xl"></i>
           </div>
-          <h3 class="text-white font-bold text-xl mb-3">Personale Qualificato</h3>
-          <p class="text-slate-400 leading-relaxed">
-            Tutti i nostri tecnici sono <strong class="text-white">certificati, assicurati e aggiornati</strong> sulle normative CEI vigenti. Lavoriamo in sicurezza, sempre.
-          </p>
-          <div class="mt-6 pt-6 border-t border-white/5">
-            <span class="text-brand-yellow font-black text-2xl">CEI</span>
-            <span class="text-slate-500 text-sm ml-1">certificati</span>
-          </div>
+          <h3 class="text-xl font-bold mb-3">Impianti Industriali</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">Soluzioni elettriche per aziende, uffici e capannoni, conformi alle normative vigenti.</p>
         </div>
 
-      </div>
-
-      <!-- Barra statistiche -->
-      <div class="mt-16 reveal rounded-2xl p-8 grid grid-cols-2 lg:grid-cols-4 gap-8 text-center"
-           style="background: linear-gradient(135deg, rgba(245,158,11,0.08), rgba(234,88,12,0.04)); border: 1px solid rgba(245,158,11,0.15);">
-        <div>
-          <div class="stat-number">+1500</div>
-          <div class="text-slate-400 text-sm mt-1 font-medium">Clienti Soddisfatti</div>
-        </div>
-        <div>
-          <div class="stat-number">15+</div>
-          <div class="text-slate-400 text-sm mt-1 font-medium">Anni di Esperienza</div>
-        </div>
-        <div>
-          <div class="stat-number">4.9★</div>
-          <div class="text-slate-400 text-sm mt-1 font-medium">Rating Google</div>
-        </div>
-        <div>
-          <div class="stat-number">24/7</div>
-          <div class="text-slate-400 text-sm mt-1 font-medium">Disponibilità</div>
-        </div>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ============================================================
-       I NOSTRI SERVIZI
-       ============================================================ -->
-  <section id="servizi" class="py-20 lg:py-28 bg-brand-gray">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-      <!-- Intestazione -->
-      <div class="text-center mb-16 reveal">
-        <p class="text-brand-light font-semibold text-sm tracking-widest uppercase mb-3">Cosa Facciamo</p>
-        <h2 class="section-title text-3xl sm:text-4xl lg:text-5xl font-black text-brand-navy">
-          I Nostri Servizi
-        </h2>
-        <p class="mt-6 text-slate-500 text-lg max-w-2xl mx-auto">
-          Dalla ricerca guasti agli impianti industriali: offriamo soluzioni elettriche complete per privati e aziende.
-        </p>
-      </div>
-
-      <!-- Grid 6 servizi -->
-      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-
-        <!-- Servizio 1: Ricerca Guasti -->
-        <div class="reveal card-lift bg-white rounded-2xl p-7 shadow-card border border-slate-100 relative overflow-hidden group">
-          <div class="absolute top-0 left-0 w-1 h-full rounded-l-2xl"
-               style="background: linear-gradient(180deg, #F59E0B, #EA580C);"></div>
-          <div class="service-icon-wrap inline-flex items-center justify-center w-14 h-14 rounded-xl mb-5"
-               style="background: linear-gradient(135deg, #FEF3C7, #FDE68A);">
-            <i class="fas fa-search text-brand-orange text-xl"></i>
+        <!-- Servizio 4 -->
+        <div class="bg-brand-gray p-8 rounded-3xl card-lift reveal delay-100">
+          <div class="service-icon-wrap w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm">
+            <i class="fas fa-microchip text-brand-light text-2xl"></i>
           </div>
-          <h3 class="font-bold text-brand-navy text-lg mb-2">Ricerca Guasti</h3>
-          <p class="text-slate-500 text-sm leading-relaxed">
-            Diagnosi rapida e precisa di cortocircuiti, interruzioni di corrente e anomalie con strumentazione professionale.
-          </p>
-          <div class="mt-5 flex items-center gap-2 text-brand-light text-sm font-semibold group-hover:gap-3 transition-all">
-            <span>Scopri di più</span>
-            <i class="fas fa-arrow-right text-xs"></i>
-          </div>
+          <h3 class="text-xl font-bold mb-3">Quadri Elettrici</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">Cablaggio, aggiornamento e messa a norma di quadri elettrici e salvavita.</p>
         </div>
 
-        <!-- Servizio 2: Impianti Civili -->
-        <div class="reveal card-lift bg-white rounded-2xl p-7 shadow-card border border-slate-100 relative overflow-hidden group">
-          <div class="absolute top-0 left-0 w-1 h-full rounded-l-2xl"
-               style="background: linear-gradient(180deg, #F59E0B, #EA580C);"></div>
-          <div class="service-icon-wrap inline-flex items-center justify-center w-14 h-14 rounded-xl mb-5"
-               style="background: linear-gradient(135deg, #FEF3C7, #FDE68A);">
-            <i class="fas fa-home text-brand-orange text-xl"></i>
+        <!-- Servizio 5 -->
+        <div class="bg-brand-gray p-8 rounded-3xl card-lift reveal delay-200">
+          <div class="service-icon-wrap w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm">
+            <i class="fas fa-video text-brand-light text-2xl"></i>
           </div>
-          <h3 class="font-bold text-brand-navy text-lg mb-2">Impianti Civili</h3>
-          <p class="text-slate-500 text-sm leading-relaxed">
-            Installazione, ristrutturazione e messa a norma di impianti elettrici per abitazioni private e condomini.
-          </p>
-          <div class="mt-5 flex items-center gap-2 text-brand-light text-sm font-semibold group-hover:gap-3 transition-all">
-            <span>Scopri di più</span>
-            <i class="fas fa-arrow-right text-xs"></i>
-          </div>
+          <h3 class="text-xl font-bold mb-3">Citofonia</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">Installazione e riparazione di citofoni, videocitofoni e sistemi di controllo accessi.</p>
         </div>
 
-        <!-- Servizio 3: Impianti Industriali -->
-        <div class="reveal card-lift bg-white rounded-2xl p-7 shadow-card border border-slate-100 relative overflow-hidden group">
-          <div class="absolute top-0 left-0 w-1 h-full rounded-l-2xl"
-               style="background: linear-gradient(180deg, #F59E0B, #EA580C);"></div>
-          <div class="service-icon-wrap inline-flex items-center justify-center w-14 h-14 rounded-xl mb-5"
-               style="background: linear-gradient(135deg, #FEF3C7, #FDE68A);">
-            <i class="fas fa-industry text-brand-orange text-xl"></i>
+        <!-- Servizio 6 -->
+        <div class="bg-brand-gray p-8 rounded-3xl card-lift reveal delay-300">
+          <div class="service-icon-wrap w-16 h-16 bg-white rounded-2xl flex items-center justify-center mb-6 shadow-sm">
+            <i class="fas fa-earth-europe text-brand-light text-2xl"></i>
           </div>
-          <h3 class="font-bold text-brand-navy text-lg mb-2">Impianti Industriali</h3>
-          <p class="text-slate-500 text-sm leading-relaxed">
-            Progettazione e realizzazione di impianti per capannoni, magazzini e strutture produttive secondo normativa.
-          </p>
-          <div class="mt-5 flex items-center gap-2 text-brand-light text-sm font-semibold group-hover:gap-3 transition-all">
-            <span>Scopri di più</span>
-            <i class="fas fa-arrow-right text-xs"></i>
-          </div>
+          <h3 class="text-xl font-bold mb-3">Messa a Terra</h3>
+          <p class="text-slate-600 text-sm leading-relaxed">Verifica e realizzazione di impianti di messa a terra per la massima sicurezza.</p>
         </div>
-
-        <!-- Servizio 4: Quadri Elettrici -->
-        <div class="reveal card-lift bg-white rounded-2xl p-7 shadow-card border border-slate-100 relative overflow-hidden group">
-          <div class="absolute top-0 left-0 w-1 h-full rounded-l-2xl"
-               style="background: linear-gradient(180deg, #F59E0B, #EA580C);"></div>
-          <div class="service-icon-wrap inline-flex items-center justify-center w-14 h-14 rounded-xl mb-5"
-               style="background: linear-gradient(135deg, #FEF3C7, #FDE68A);">
-            <i class="fas fa-server text-brand-orange text-xl"></i>
-          </div>
-          <h3 class="font-bold text-brand-navy text-lg mb-2">Quadri Elettrici</h3>
-          <p class="text-slate-500 text-sm leading-relaxed">
-            Installazione e manutenzione di quadri di distribuzione, protezione e automazione per ogni esigenza.
-          </p>
-          <div class="mt-5 flex items-center gap-2 text-brand-light text-sm font-semibold group-hover:gap-3 transition-all">
-            <span>Scopri di più</span>
-            <i class="fas fa-arrow-right text-xs"></i>
-          </div>
-        </div>
-
-        <!-- Servizio 5: Citofonia / Videocitofonia -->
-        <div class="reveal card-lift bg-white rounded-2xl p-7 shadow-card border border-slate-100 relative overflow-hidden group">
-          <div class="absolute top-0 left-0 w-1 h-full rounded-l-2xl"
-               style="background: linear-gradient(180deg, #F59E0B, #EA580C);"></div>
-          <div class="service-icon-wrap inline-flex items-center justify-center w-14 h-14 rounded-xl mb-5"
-               style="background: linear-gradient(135deg, #FEF3C7, #FDE68A);">
-            <i class="fas fa-video text-brand-orange text-xl"></i>
-          </div>
-          <h3 class="font-bold text-brand-navy text-lg mb-2">Citofonia & Videocitofonia</h3>
-          <p class="text-slate-500 text-sm leading-relaxed">
-            Sistemi citofonici e videocitofonici analogici e IP per abitazioni, uffici e complessi residenziali.
-          </p>
-          <div class="mt-5 flex items-center gap-2 text-brand-light text-sm font-semibold group-hover:gap-3 transition-all">
-            <span>Scopri di più</span>
-            <i class="fas fa-arrow-right text-xs"></i>
-          </div>
-        </div>
-
-        <!-- Servizio 6: Messa a Terra -->
-        <div class="reveal card-lift bg-white rounded-2xl p-7 shadow-card border border-slate-100 relative overflow-hidden group">
-          <div class="absolute top-0 left-0 w-1 h-full rounded-l-2xl"
-               style="background: linear-gradient(180deg, #F59E0B, #EA580C);"></div>
-          <div class="service-icon-wrap inline-flex items-center justify-center w-14 h-14 rounded-xl mb-5"
-               style="background: linear-gradient(135deg, #FEF3C7, #FDE68A);">
-            <i class="fas fa-shield-alt text-brand-orange text-xl"></i>
-          </div>
-          <h3 class="font-bold text-brand-navy text-lg mb-2">Messa a Terra</h3>
-          <p class="text-slate-500 text-sm leading-relaxed">
-            Verifica, adeguamento e certificazione degli impianti di terra secondo le norme CEI 64-8 e INAIL.
-          </p>
-          <div class="mt-5 flex items-center gap-2 text-brand-light text-sm font-semibold group-hover:gap-3 transition-all">
-            <span>Scopri di più</span>
-            <i class="fas fa-arrow-right text-xs"></i>
-          </div>
-        </div>
-
-      </div>
-
-      <!-- CTA sotto servizi -->
-      <div class="text-center mt-12 reveal">
-        <a href="#contatti"
-           class="inline-flex items-center gap-3 px-10 py-4 rounded-2xl font-bold text-lg text-brand-dark transition-all duration-300 hover:scale-105 active:scale-95"
-           style="background: linear-gradient(135deg, #F59E0B, #EA580C); box-shadow: 0 8px 32px rgba(245,158,11,0.45);">
-          <i class="fas fa-paper-plane"></i>
-          Richiedi un Preventivo Gratuito
-        </a>
-      </div>
-
-    </div>
-  </section>
-
-
-  <!-- ============================================================
-       BANNER URGENZA / PRONTO INTERVENTO
-       ============================================================ -->
-  <section class="py-14" style="background: linear-gradient(135deg, #F59E0B 0%, #EA580C 100%);">
-    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex flex-col lg:flex-row items-center justify-between gap-8 text-center lg:text-left">
-        <div class="flex items-center gap-5">
-          <div class="flex items-center justify-center w-16 h-16 rounded-2xl bg-white/20 flex-shrink-0">
-            <i class="fas fa-exclamation-triangle text-white text-2xl"></i>
-          </div>
-          <div>
-            <h3 class="text-white font-black text-2xl lg:text-3xl">Hai un'emergenza elettrica?</h3>
-            <p class="text-white/80 text-lg mt-1">Siamo disponibili <strong class="text-white">24 ore su 24</strong>, anche di notte e nei giorni festivi.</p>
-          </div>
-        </div>
-        <!-- MODIFICA: Sostituisci +39XXXXXXXXXX con il tuo numero di telefono -->
-        <a href="tel:+39XXXXXXXXXX"
-           class="flex-shrink-0 flex items-center gap-3 px-10 py-4 rounded-2xl font-black text-xl bg-white text-brand-orange transition-all duration-300 hover:scale-105 active:scale-95 shadow-2xl">
-          <i class="fas fa-phone-alt animate-bounce-slow"></i>
-          <!-- MODIFICA: Inserisci il tuo numero di telefono visibile -->
-          +39 XXX XXX XXXX
-        </a>
       </div>
     </div>
   </section>
 
+  <!-- ============================================================
+       PERCHÉ SCEGLIERE NOI (Punti di forza)
+       ============================================================ -->
+  <section id="perche-noi" class="py-24 bg-brand-navy relative overflow-hidden">
+    <div class="absolute inset-0 hero-pattern opacity-10"></div>
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        <div class="reveal">
+          <h2 class="text-3xl md:text-5xl font-black text-white mb-8">Perché affidarsi a ElettroSicura?</h2>
+          <div class="space-y-8">
+            <!-- Punto 1 -->
+            <div class="flex gap-6">
+              <div class="w-14 h-14 bg-brand-yellow/10 rounded-2xl flex items-center justify-center shrink-0 border border-brand-yellow/20">
+                <i class="fas fa-shipping-fast text-brand-yellow text-2xl"></i>
+              </div>
+              <div>
+                <h4 class="text-white font-bold text-xl mb-2">Intervento Rapido</h4>
+                <p class="text-slate-400 leading-relaxed">Siamo operativi 24/7. Garantiamo l'arrivo di un tecnico entro 60 minuti dalla chiamata per le emergenze.</p>
+              </div>
+            </div>
+            <!-- Punto 2 -->
+            <div class="flex gap-6">
+              <div class="w-14 h-14 bg-brand-yellow/10 rounded-2xl flex items-center justify-center shrink-0 border border-brand-yellow/20">
+                <i class="fas fa-file-invoice-dollar text-brand-yellow text-2xl"></i>
+              </div>
+              <div>
+                <h4 class="text-white font-bold text-xl mb-2">Preventivi Trasparenti</h4>
+                <p class="text-slate-400 leading-relaxed">Nessuna sorpresa. Comunichiamo il costo dell'intervento prima di iniziare i lavori.</p>
+              </div>
+            </div>
+            <!-- Punto 3 -->
+            <div class="flex gap-6">
+              <div class="w-14 h-14 bg-brand-yellow/10 rounded-2xl flex items-center justify-center shrink-0 border border-brand-yellow/20">
+                <i class="fas fa-user-shield text-brand-yellow text-2xl"></i>
+              </div>
+              <div>
+                <h4 class="text-white font-bold text-xl mb-2">Personale Qualificato</h4>
+                <p class="text-slate-400 leading-relaxed">Tutti i nostri tecnici sono abilitati e seguono costanti corsi di aggiornamento sulle normative di sicurezza.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="bg-white/5 p-8 rounded-[40px] border border-white/10 backdrop-blur-sm reveal delay-200">
+          <div class="text-center mb-10">
+            <h3 class="text-2xl font-bold text-white mb-2">Hai un'emergenza?</h3>
+            <p class="text-slate-400">Non aspettare, la sicurezza non può attendere.</p>
+          </div>
+          <div class="space-y-6">
+            <a href="tel:+39XXXXXXXXXX" class="flex items-center justify-center gap-4 w-full bg-brand-yellow hover:bg-brand-orange text-brand-dark py-5 rounded-2xl font-black text-2xl transition-all shadow-cta">
+              <i class="fas fa-phone-alt animate-pulse"></i>
+              +39 XXX XXX XXXX
+            </a>
+            <p class="text-center text-slate-500 text-sm">Servizio attivo 24 ore su 24, anche festivi.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 
   <!-- ============================================================
-       RECENSIONI (Riprova Sociale)
+       RECENSIONI (Social Proof)
        ============================================================ -->
-  <section id="recensioni" class="py-20 lg:py-28" style="background: #0B1F3A;">
+  <section id="recensioni" class="py-24 bg-brand-gray">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-      <!-- Intestazione -->
-      <div class="text-center mb-16 reveal">
-        <p class="text-brand-yellow font-semibold text-sm tracking-widest uppercase mb-3">La Voce dei Clienti</p>
-        <h2 class="section-title text-3xl sm:text-4xl lg:text-5xl font-black text-white">
-          Cosa Dicono di Noi
-        </h2>
-
-        <!-- Rating Google -->
-        <div class="flex items-center justify-center gap-3 mt-8">
-          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png"
-               alt="Google" class="w-7 h-7 object-contain" />
-          <div class="flex gap-1">
-            <i class="fas fa-star star-filled text-xl"></i>
-            <i class="fas fa-star star-filled text-xl"></i>
-            <i class="fas fa-star star-filled text-xl"></i>
-            <i class="fas fa-star star-filled text-xl"></i>
-            <i class="fas fa-star star-filled text-xl"></i>
-          </div>
-          <span class="text-white font-black text-xl">4.9</span>
-          <span class="text-slate-400 text-sm">(127 recensioni)</span>
+      <div class="text-center mb-20 reveal">
+        <h2 class="text-3xl md:text-5xl font-black text-brand-navy mb-4 section-title">Dicono di Noi</h2>
+        <div class="flex items-center justify-center gap-2 mb-4">
+          <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png" alt="Google" class="w-5 h-5" />
+          <span class="font-bold text-sm">4.9/5 su Google Reviews</span>
         </div>
       </div>
 
-      <!-- Grid recensioni -->
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-
+      <div class="grid md:grid-cols-3 gap-8">
         <!-- Recensione 1 -->
-        <!-- MODIFICA: Puoi personalizzare nome, testo e data delle recensioni -->
-        <div class="reveal card-lift rounded-2xl p-8 relative"
-             style="background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.08);">
-          <div class="flex gap-1 mb-4">
-            <i class="fas fa-star star-filled"></i>
-            <i class="fas fa-star star-filled"></i>
-            <i class="fas fa-star star-filled"></i>
-            <i class="fas fa-star star-filled"></i>
-            <i class="fas fa-star star-filled"></i>
-          </div>
-          <blockquote class="text-slate-300 leading-relaxed mb-6 italic">
-            "Intervento rapidissimo dopo una perdita di corrente in casa. Sono arrivati in meno di un'ora, hanno trovato il guasto subito e il prezzo era esattamente quello del preventivo. Consigliatissimi!"
-          </blockquote>
-          <div class="flex items-center gap-3 pt-5 border-t border-white/8">
-            <div class="flex items-center justify-center w-11 h-11 rounded-full font-bold text-brand-dark text-sm"
-                 style="background: linear-gradient(135deg, #F59E0B, #EA580C);">
-              MR
-            </div>
+        <div class="bg-white p-8 rounded-3xl shadow-card reveal delay-100">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 bg-brand-navy rounded-full flex items-center justify-center text-white font-bold">MR</div>
             <div>
-              <div class="text-white font-semibold text-sm">Marco Rossi</div>
-              <div class="text-slate-500 text-xs">Milano · 2 settimane fa</div>
+              <h4 class="font-bold">Mario Rossi</h4>
+              <div class="flex text-xs star-filled">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
             </div>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png"
-                 alt="Google" class="w-5 h-5 object-contain ml-auto opacity-60" />
           </div>
+          <p class="text-slate-600 italic leading-relaxed">"Tecnico arrivato in meno di un'ora per un corto circuito. Molto professionale e onesto. Consigliatissimo!"</p>
         </div>
 
         <!-- Recensione 2 -->
-        <div class="reveal card-lift rounded-2xl p-8 relative border border-brand-yellow/20"
-             style="background: linear-gradient(145deg, rgba(245,158,11,0.07), rgba(234,88,12,0.03));">
-          <div class="absolute top-4 right-4">
-            <span class="text-xs font-bold text-brand-yellow bg-brand-yellow/10 px-2 py-1 rounded-full">Verificata</span>
-          </div>
-          <div class="flex gap-1 mb-4">
-            <i class="fas fa-star star-filled"></i>
-            <i class="fas fa-star star-filled"></i>
-            <i class="fas fa-star star-filled"></i>
-            <i class="fas fa-star star-filled"></i>
-            <i class="fas fa-star star-filled"></i>
-          </div>
-          <blockquote class="text-slate-300 leading-relaxed mb-6 italic">
-            "Ho fatto installare un nuovo impianto elettrico completo per il mio appartamento. Lavoro impeccabile, puliti, precisi e professionali. Il preventivo era dettagliato e rispettato al centesimo."
-          </blockquote>
-          <div class="flex items-center gap-3 pt-5 border-t border-white/8">
-            <div class="flex items-center justify-center w-11 h-11 rounded-full font-bold text-brand-dark text-sm"
-                 style="background: linear-gradient(135deg, #F59E0B, #EA580C);">
-              LB
-            </div>
+        <div class="bg-white p-8 rounded-3xl shadow-card reveal delay-200">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 bg-brand-navy rounded-full flex items-center justify-center text-white font-bold">LB</div>
             <div>
-              <div class="text-white font-semibold text-sm">Laura Bianchi</div>
-              <div class="text-slate-500 text-xs">Milano · 1 mese fa</div>
+              <h4 class="font-bold">Laura Bianchi</h4>
+              <div class="flex text-xs star-filled">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
             </div>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png"
-                 alt="Google" class="w-5 h-5 object-contain ml-auto opacity-60" />
           </div>
+          <p class="text-slate-600 italic leading-relaxed">"Hanno rifatto l'impianto del mio ufficio. Lavoro pulito, veloce e certificato. Ottimo rapporto qualità-prezzo."</p>
         </div>
 
         <!-- Recensione 3 -->
-        <div class="reveal card-lift rounded-2xl p-8 relative"
-             style="background: linear-gradient(145deg, rgba(255,255,255,0.06), rgba(255,255,255,0.02)); border: 1px solid rgba(255,255,255,0.08);">
-          <div class="flex gap-1 mb-4">
-            <i class="fas fa-star star-filled"></i>
-            <i class="fas fa-star star-filled"></i>
-            <i class="fas fa-star star-filled"></i>
-            <i class="fas fa-star star-filled"></i>
-            <i class="fas fa-star star-filled"></i>
-          </div>
-          <blockquote class="text-slate-300 leading-relaxed mb-6 italic">
-            "Ottima azienda! Ho chiamato per la messa a norma del quadro elettrico del mio capannone. Lavoro eseguito in tempi brevissimi, con tutta la documentazione in regola. Tornerò sicuramente."
-          </blockquote>
-          <div class="flex items-center gap-3 pt-5 border-t border-white/8">
-            <div class="flex items-center justify-center w-11 h-11 rounded-full font-bold text-brand-dark text-sm"
-                 style="background: linear-gradient(135deg, #F59E0B, #EA580C);">
-              GF
-            </div>
+        <div class="bg-white p-8 rounded-3xl shadow-card reveal delay-300">
+          <div class="flex items-center gap-4 mb-6">
+            <div class="w-12 h-12 bg-brand-navy rounded-full flex items-center justify-center text-white font-bold">GV</div>
             <div>
-              <div class="text-white font-semibold text-sm">Giuseppe Ferrari</div>
-              <div class="text-slate-500 text-xs">Sesto S.G. · 3 mesi fa</div>
+              <h4 class="font-bold">Giuseppe Verdi</h4>
+              <div class="flex text-xs star-filled">
+                <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+              </div>
             </div>
-            <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/c/c1/Google_%22G%22_logo.svg/1200px-Google_%22G%22_logo.svg.png"
-                 alt="Google" class="w-5 h-5 object-contain ml-auto opacity-60" />
           </div>
+          <p class="text-slate-600 italic leading-relaxed">"Sempre disponibili e gentili. Mi hanno risolto un problema al citofono che altri non riuscivano a sistemare."</p>
         </div>
-
       </div>
     </div>
   </section>
-
 
   <!-- ============================================================
-       SEZIONE CONTATTI
+       CONTACT US (Contatti)
        ============================================================ -->
-  <section id="contatti" class="py-20 lg:py-28 bg-brand-gray">
+  <section id="contatti" class="py-24 bg-white">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid lg:grid-cols-2 gap-16 items-center">
+        
+        <!-- Info Contatti -->
+        <div class="reveal">
+          <h2 class="text-3xl md:text-5xl font-black text-brand-navy mb-8">Contattaci Ora</h2>
+          <p class="text-slate-600 text-lg mb-10">Compila il modulo per un preventivo gratuito o chiamaci per un intervento immediato.</p>
 
-      <!-- Intestazione -->
-      <div class="text-center mb-16 reveal">
-        <p class="text-brand-light font-semibold text-sm tracking-widest uppercase mb-3">Siamo Qui per Te</p>
-        <h2 class="section-title text-3xl sm:text-4xl lg:text-5xl font-black text-brand-navy">
-          Contattaci
-        </h2>
-        <p class="mt-6 text-slate-500 text-lg max-w-2xl mx-auto">
-          Compila il modulo o scrivici direttamente su WhatsApp. Risponderemo entro pochi minuti.
-        </p>
-      </div>
-
-      <div class="grid grid-cols-1 lg:grid-cols-5 gap-10 lg:gap-16">
-
-        <!-- FORM DI CONTATTO (3 colonne) -->
-        <div class="lg:col-span-3 reveal">
-          <div class="bg-white rounded-3xl p-8 lg:p-10 shadow-card-lg border border-slate-100">
-            <h3 class="text-brand-navy font-bold text-xl mb-6 flex items-center gap-3">
-              <span class="flex items-center justify-center w-9 h-9 rounded-xl"
-                    style="background: linear-gradient(135deg, #F59E0B, #EA580C);">
-                <i class="fas fa-paper-plane text-white text-sm"></i>
-              </span>
-              Richiedi un Preventivo Gratuito
-            </h3>
-
-            <!-- NOTA: Questo form è statico. Per renderlo funzionale, collega un backend
-                 o un servizio come Formspree (https://formspree.io) o EmailJS -->
-            <form id="contact-form" class="space-y-5" novalidate>
-
-              <div class="grid grid-cols-1 sm:grid-cols-2 gap-5">
-                <!-- Nome -->
-                <div>
-                  <label for="nome" class="block text-sm font-semibold text-slate-700 mb-1.5">
-                    Nome e Cognome <span class="text-red-500">*</span>
-                  </label>
-                  <input type="text" id="nome" name="nome" required
-                         placeholder="Mario Rossi"
-                         class="form-input w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm bg-slate-50 transition-all duration-200 placeholder-slate-400" />
-                </div>
-                <!-- Telefono -->
-                <div>
-                  <label for="telefono" class="block text-sm font-semibold text-slate-700 mb-1.5">
-                    Telefono <span class="text-red-500">*</span>
-                  </label>
-                  <input type="tel" id="telefono" name="telefono" required
-                         placeholder="+39 333 000 0000"
-                         class="form-input w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm bg-slate-50 transition-all duration-200 placeholder-slate-400" />
-                </div>
+          <div class="space-y-8">
+            <div class="flex items-start gap-6">
+              <div class="w-12 h-12 bg-brand-navy/5 rounded-xl flex items-center justify-center shrink-0">
+                <i class="fas fa-map-marker-alt text-brand-light text-xl"></i>
               </div>
-
-              <!-- Email -->
               <div>
-                <label for="email" class="block text-sm font-semibold text-slate-700 mb-1.5">
-                  Indirizzo Email
-                </label>
-                <input type="email" id="email" name="email"
-                       placeholder="mario@esempio.it"
-                       class="form-input w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm bg-slate-50 transition-all duration-200 placeholder-slate-400" />
+                <h4 class="font-bold text-lg">Indirizzo</h4>
+                <!-- MODIFICA: Inserisci il tuo indirizzo -->
+                <p class="text-slate-500">Via Roma 123, 20100 Milano (MI)</p>
               </div>
-
-              <!-- Messaggio -->
-              <div>
-                <label for="messaggio" class="block text-sm font-semibold text-slate-700 mb-1.5">
-                  Descrivi il tuo problema <span class="text-red-500">*</span>
-                </label>
-                <textarea id="messaggio" name="messaggio" rows="4" required
-                          placeholder="Es: Ho un guasto al quadro elettrico, nessuna presa funziona in cucina..."
-                          class="form-input w-full px-4 py-3 rounded-xl border border-slate-200 text-slate-800 text-sm bg-slate-50 transition-all duration-200 placeholder-slate-400 resize-none"></textarea>
-              </div>
-
-              <!-- Privacy -->
-              <div class="flex items-start gap-3">
-                <input type="checkbox" id="privacy" name="privacy" required
-                       class="mt-0.5 w-4 h-4 rounded border-slate-300 accent-brand-light cursor-pointer" />
-                <label for="privacy" class="text-xs text-slate-500 cursor-pointer leading-relaxed">
-                  Acconsento al trattamento dei dati personali ai sensi del
-                  <a href="#privacy-policy" class="text-brand-light hover:underline font-medium">Regolamento GDPR (UE) 2016/679</a>
-                  e della nostra
-                  <a href="#privacy-policy" class="text-brand-light hover:underline font-medium">Privacy Policy</a>.
-                </label>
-              </div>
-
-              <!-- Submit -->
-              <button type="submit"
-                      class="w-full flex items-center justify-center gap-3 py-4 rounded-2xl font-bold text-lg text-brand-dark transition-all duration-300 hover:scale-[1.02] active:scale-[0.98]"
-                      style="background: linear-gradient(135deg, #F59E0B, #EA580C); box-shadow: 0 8px 32px rgba(245,158,11,0.45);">
-                <i class="fas fa-paper-plane"></i>
-                Invia la Richiesta
-              </button>
-
-            </form>
-
-            <!-- Messaggio di successo (nascosto di default) -->
-            <div id="form-success"
-                 class="hidden mt-6 p-5 rounded-2xl bg-green-50 border border-green-200 text-center">
-              <i class="fas fa-check-circle text-green-500 text-3xl mb-3"></i>
-              <p class="text-green-800 font-bold text-lg">Richiesta inviata con successo!</p>
-              <p class="text-green-600 text-sm mt-1">Ti contatteremo entro poche ore. Grazie!</p>
             </div>
+
+            <div class="flex items-start gap-6">
+              <div class="w-12 h-12 bg-brand-navy/5 rounded-xl flex items-center justify-center shrink-0">
+                <i class="fas fa-phone-alt text-brand-light text-xl"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-lg">Telefono</h4>
+                <!-- MODIFICA: Inserisci il tuo numero -->
+                <p class="text-slate-500">+39 XXX XXX XXXX</p>
+              </div>
+            </div>
+
+            <div class="flex items-start gap-6">
+              <div class="w-12 h-12 bg-brand-navy/5 rounded-xl flex items-center justify-center shrink-0">
+                <i class="fas fa-clock text-brand-light text-xl"></i>
+              </div>
+              <div>
+                <h4 class="font-bold text-lg">Orari di Apertura</h4>
+                <p class="text-slate-500">Lun - Dom: 24 ore su 24 (Sempre Aperti)</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="mt-12">
+            <a href="https://wa.me/39XXXXXXXXXX" class="inline-flex items-center gap-3 bg-[#25D366] hover:bg-[#128C7E] text-white px-8 py-4 rounded-xl font-bold text-lg transition-all shadow-lg">
+              <i class="fab fa-whatsapp text-2xl"></i>
+              Scrivici su WhatsApp
+            </a>
           </div>
         </div>
 
-        <!-- INFO CONTATTI (2 colonne) -->
-        <div class="lg:col-span-2 reveal space-y-6">
-
-          <!-- Indirizzo -->
-          <!-- MODIFICA: Aggiorna indirizzo, telefono, email e orari -->
-          <div class="bg-white rounded-2xl p-6 shadow-card border border-slate-100 flex gap-4">
-            <div class="flex items-center justify-center w-12 h-12 rounded-xl flex-shrink-0"
-                 style="background: linear-gradient(135deg, rgba(245,158,11,0.12), rgba(234,88,12,0.08)); border: 1px solid rgba(245,158,11,0.2);">
-              <i class="fas fa-map-marker-alt text-brand-yellow text-lg"></i>
-            </div>
-            <div>
-              <h4 class="font-bold text-brand-navy text-sm mb-1">Indirizzo</h4>
-              <!-- MODIFICA: Inserisci il tuo indirizzo -->
-              <p class="text-slate-500 text-sm leading-relaxed">Via Roma 123<br />20100 Milano (MI)</p>
-            </div>
-          </div>
-
-          <!-- Telefono -->
-          <div class="bg-white rounded-2xl p-6 shadow-card border border-slate-100 flex gap-4">
-            <div class="flex items-center justify-center w-12 h-12 rounded-xl flex-shrink-0"
-                 style="background: linear-gradient(135deg, rgba(245,158,11,0.12), rgba(234,88,12,0.08)); border: 1px solid rgba(245,158,11,0.2);">
-              <i class="fas fa-phone-alt text-brand-yellow text-lg"></i>
-            </div>
-            <div>
-              <h4 class="font-bold text-brand-navy text-sm mb-1">Telefono</h4>
-              <!-- MODIFICA: Inserisci il tuo numero di telefono -->
-              <a href="tel:+39XXXXXXXXXX" class="text-brand-light font-semibold text-sm hover:underline">+39 XXX XXX XXXX</a>
-              <p class="text-slate-400 text-xs mt-0.5">Disponibile 24/7 per emergenze</p>
-            </div>
-          </div>
-
-          <!-- Email -->
-          <div class="bg-white rounded-2xl p-6 shadow-card border border-slate-100 flex gap-4">
-            <div class="flex items-center justify-center w-12 h-12 rounded-xl flex-shrink-0"
-                 style="background: linear-gradient(135deg, rgba(245,158,11,0.12), rgba(234,88,12,0.08)); border: 1px solid rgba(245,158,11,0.2);">
-              <i class="fas fa-envelope text-brand-yellow text-lg"></i>
-            </div>
-            <div>
-              <h4 class="font-bold text-brand-navy text-sm mb-1">Email</h4>
-              <!-- MODIFICA: Inserisci la tua email -->
-              <a href="mailto:info@elettrosicura.it" class="text-brand-light font-semibold text-sm hover:underline">info@elettrosicura.it</a>
-            </div>
-          </div>
-
-          <!-- Orari -->
-          <div class="bg-white rounded-2xl p-6 shadow-card border border-slate-100 flex gap-4">
-            <div class="flex items-center justify-center w-12 h-12 rounded-xl flex-shrink-0"
-                 style="background: linear-gradient(135deg, rgba(245,158,11,0.12), rgba(234,88,12,0.08)); border: 1px solid rgba(245,158,11,0.2);">
-              <i class="fas fa-clock text-brand-yellow text-lg"></i>
-            </div>
-            <div class="w-full">
-              <h4 class="font-bold text-brand-navy text-sm mb-3">Orari di Apertura</h4>
-              <!-- MODIFICA: Aggiorna gli orari di apertura -->
-              <div class="space-y-1.5 text-sm">
-                <div class="flex justify-between">
-                  <span class="text-slate-500">Lun – Ven</span>
-                  <span class="text-brand-navy font-semibold">08:00 – 18:00</span>
-                </div>
-                <div class="flex justify-between">
-                  <span class="text-slate-500">Sabato</span>
-                  <span class="text-brand-navy font-semibold">09:00 – 13:00</span>
-                </div>
-                <div class="flex justify-between">
-                  <span class="text-slate-500">Domenica</span>
-                  <span class="text-slate-400">Solo emergenze</span>
-                </div>
-                <div class="mt-3 pt-3 border-t border-slate-100 flex items-center gap-2">
-                  <span class="w-2 h-2 rounded-full bg-green-500 animate-pulse-slow"></span>
-                  <span class="text-green-600 font-semibold text-xs">Pronto intervento 24/7</span>
-                </div>
+        <!-- Form Contatti -->
+        <div class="bg-brand-gray p-10 rounded-[40px] shadow-card reveal delay-200">
+          <h3 class="text-2xl font-bold mb-8">Richiedi Preventivo</h3>
+          <form id="contact-form" class="space-y-5">
+            <div class="grid md:grid-cols-2 gap-5">
+              <div>
+                <label class="block text-sm font-bold mb-2 ml-1">Nome</label>
+                <input type="text" required placeholder="Il tuo nome" class="form-input w-full bg-white border-none px-6 py-4 rounded-2xl shadow-sm" />
+              </div>
+              <div>
+                <label class="block text-sm font-bold mb-2 ml-1">Telefono</label>
+                <input type="tel" required placeholder="Il tuo numero" class="form-input w-full bg-white border-none px-6 py-4 rounded-2xl shadow-sm" />
               </div>
             </div>
+            <div>
+              <label class="block text-sm font-bold mb-2 ml-1">Email</label>
+              <input type="email" required placeholder="La tua email" class="form-input w-full bg-white border-none px-6 py-4 rounded-2xl shadow-sm" />
+            </div>
+            <div>
+              <label class="block text-sm font-bold mb-2 ml-1">Messaggio</label>
+              <textarea rows="4" required placeholder="Descrivi brevemente la tua necessità..." class="form-input w-full bg-white border-none px-6 py-4 rounded-2xl shadow-sm"></textarea>
+            </div>
+            <button type="submit" class="w-full bg-brand-navy hover:bg-brand-dark text-white py-5 rounded-2xl font-black text-lg transition-all shadow-lg">
+              Invia Richiesta
+            </button>
+          </form>
+          <div id="form-success" class="hidden mt-6 p-4 bg-green-100 border border-green-200 text-green-700 rounded-2xl text-center font-bold">
+            Richiesta inviata con successo! Ti ricontatteremo a breve.
           </div>
-
-          <!-- Bottone WhatsApp grande -->
-          <!-- MODIFICA: Sostituisci +39XXXXXXXXXX con il tuo numero WhatsApp -->
-          <a href="https://wa.me/39XXXXXXXXXX?text=Ciao!%20Vorrei%20un%20preventivo%20gratuito."
-             target="_blank"
-             rel="noopener"
-             class="flex items-center justify-center gap-3 w-full py-4 rounded-2xl font-bold text-lg text-white transition-all duration-300 hover:scale-[1.02] active:scale-[0.98] shadow-xl"
-             style="background: linear-gradient(135deg, #25D366, #128C7E); box-shadow: 0 8px 32px rgba(37,211,102,0.35);">
-            <i class="fab fa-whatsapp text-2xl"></i>
-            Scrivici su WhatsApp
-          </a>
-
         </div>
+
       </div>
     </div>
   </section>
-
 
   <!-- ============================================================
        FOOTER
        ============================================================ -->
-  <footer id="privacy-policy" style="background: #060F1E;">
+  <footer class="bg-brand-dark text-white py-16">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-
-      <!-- Footer top -->
-      <div class="py-14 grid grid-cols-1 md:grid-cols-3 gap-10 border-b border-white/8">
-
+      <div class="grid md:grid-cols-4 gap-12 mb-12">
+        
         <!-- Brand -->
-        <div>
-          <a href="#home" class="flex items-center gap-3 mb-5">
-            <div class="flex items-center justify-center w-10 h-10 rounded-lg"
-                 style="background: linear-gradient(135deg, #F59E0B, #EA580C);">
-              <i class="fas fa-bolt text-white text-lg"></i>
+        <div class="col-span-1 md:col-span-2">
+          <a href="#" class="flex items-center gap-3 mb-6">
+            <div class="w-10 h-10 bg-brand-yellow rounded-lg flex items-center justify-center">
+              <i class="fas fa-bolt text-brand-dark"></i>
             </div>
-            <!-- MODIFICA: Cambia il nome azienda nel footer -->
-            <span class="text-white font-black text-xl">Elettro<span class="text-gradient">Sicura</span></span>
+            <span class="font-black text-2xl tracking-tight">Elettro<span class="text-brand-yellow">Sicura</span></span>
           </a>
-          <p class="text-slate-500 text-sm leading-relaxed">
-            Impianti elettrici civili e industriali a Milano e provincia. Professionalità, sicurezza e trasparenza dal 2009.
+          <p class="text-slate-500 max-w-sm leading-relaxed">
+            Il tuo partner di fiducia per la sicurezza elettrica a Milano. Interventi rapidi, certificati e garantiti 24/7.
           </p>
-          <!-- Social -->
-          <div class="flex gap-3 mt-6">
-            <a href="#" aria-label="Facebook"
-               class="flex items-center justify-center w-9 h-9 rounded-lg bg-white/5 hover:bg-brand-yellow/20 text-slate-400 hover:text-brand-yellow transition-all duration-200">
-              <i class="fab fa-facebook-f text-sm"></i>
-            </a>
-            <a href="#" aria-label="Instagram"
-               class="flex items-center justify-center w-9 h-9 rounded-lg bg-white/5 hover:bg-brand-yellow/20 text-slate-400 hover:text-brand-yellow transition-all duration-200">
-              <i class="fab fa-instagram text-sm"></i>
-            </a>
-            <a href="#" aria-label="LinkedIn"
-               class="flex items-center justify-center w-9 h-9 rounded-lg bg-white/5 hover:bg-brand-yellow/20 text-slate-400 hover:text-brand-yellow transition-all duration-200">
-              <i class="fab fa-linkedin-in text-sm"></i>
-            </a>
+          <div class="flex gap-4 mt-8">
+            <a href="#" class="w-10 h-10 bg-white/5 hover:bg-brand-yellow hover:text-brand-dark rounded-full flex items-center justify-center transition-all"><i class="fab fa-facebook-f"></i></a>
+            <a href="#" class="w-10 h-10 bg-white/5 hover:bg-brand-yellow hover:text-brand-dark rounded-full flex items-center justify-center transition-all"><i class="fab fa-instagram"></i></a>
+            <a href="#" class="w-10 h-10 bg-white/5 hover:bg-brand-yellow hover:text-brand-dark rounded-full flex items-center justify-center transition-all"><i class="fab fa-linkedin-in"></i></a>
           </div>
         </div>
 
-        <!-- Link utili -->
+        <!-- Links -->
         <div>
-          <h4 class="text-white font-bold text-sm mb-5 tracking-wide uppercase">Navigazione</h4>
-          <ul class="space-y-3">
-            <li><a href="#home"       class="text-slate-500 hover:text-brand-yellow text-sm transition-colors">Home</a></li>
-            <li><a href="#perche-noi" class="text-slate-500 hover:text-brand-yellow text-sm transition-colors">Chi Siamo</a></li>
-            <li><a href="#servizi"    class="text-slate-500 hover:text-brand-yellow text-sm transition-colors">Servizi</a></li>
-            <li><a href="#recensioni" class="text-slate-500 hover:text-brand-yellow text-sm transition-colors">Recensioni</a></li>
-            <li><a href="#contatti"   class="text-slate-500 hover:text-brand-yellow text-sm transition-colors">Contatti</a></li>
+          <h4 class="font-bold text-lg mb-6">Navigazione</h4>
+          <ul class="space-y-4 text-slate-500">
+            <li><a href="#home" class="hover:text-brand-yellow transition-colors">Home</a></li>
+            <li><a href="#servizi" class="hover:text-brand-yellow transition-colors">Servizi</a></li>
+            <li><a href="#perche-noi" class="hover:text-brand-yellow transition-colors">Chi Siamo</a></li>
+            <li><a href="#contatti" class="hover:text-brand-yellow transition-colors">Contatti</a></li>
           </ul>
         </div>
 
-        <!-- Contatti rapidi -->
+        <!-- Legal -->
         <div>
-          <h4 class="text-white font-bold text-sm mb-5 tracking-wide uppercase">Contatti Rapidi</h4>
-          <ul class="space-y-4">
-            <li class="flex items-center gap-3">
-              <i class="fas fa-phone-alt text-brand-yellow text-sm w-4"></i>
-              <!-- MODIFICA: Inserisci il tuo numero -->
-              <a href="tel:+39XXXXXXXXXX" class="text-slate-400 hover:text-white text-sm transition-colors">+39 XXX XXX XXXX</a>
-            </li>
-            <li class="flex items-center gap-3">
-              <i class="fas fa-envelope text-brand-yellow text-sm w-4"></i>
-              <!-- MODIFICA: Inserisci la tua email -->
-              <a href="mailto:info@elettrosicura.it" class="text-slate-400 hover:text-white text-sm transition-colors">info@elettrosicura.it</a>
-            </li>
-            <li class="flex items-start gap-3">
-              <i class="fas fa-map-marker-alt text-brand-yellow text-sm w-4 mt-0.5"></i>
-              <!-- MODIFICA: Inserisci il tuo indirizzo -->
-              <span class="text-slate-400 text-sm">Via Roma 123, 20100 Milano (MI)</span>
-            </li>
+          <h4 class="font-bold text-lg mb-6">Note Legali</h4>
+          <ul class="space-y-4 text-slate-500">
+            <li><a href="#" class="hover:text-brand-yellow transition-colors">Privacy Policy</a></li>
+            <li><a href="#" class="hover:text-brand-yellow transition-colors">Cookie Policy</a></li>
+            <!-- MODIFICA: Inserisci la tua P.IVA -->
+            <li>P.IVA: 00000000000</li>
           </ul>
         </div>
-
       </div>
 
-      <!-- Footer bottom -->
-      <div class="py-6 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-600">
-        <div class="flex flex-wrap items-center gap-x-4 gap-y-1 justify-center sm:justify-start">
-          <!-- MODIFICA: Aggiorna l'anno e il nome azienda -->
-          <span>&copy; 2024 ElettroSicura S.r.l. Tutti i diritti riservati.</span>
-          <!-- MODIFICA: Inserisci la tua Partita IVA -->
-          <span>P.IVA 00000000000</span>
-        </div>
-        <div class="flex gap-4">
-          <a href="#" class="hover:text-slate-400 transition-colors">Privacy Policy</a>
-          <a href="#" class="hover:text-slate-400 transition-colors">Cookie Policy</a>
-          <a href="#" class="hover:text-slate-400 transition-colors">Note Legali</a>
-        </div>
+      <div class="pt-8 border-t border-slate-800 text-center text-slate-600 text-sm">
+        <p>&copy; 2026 ElettroSicura Milano. Tutti i diritti riservati.</p>
       </div>
-
     </div>
   </footer>
 
-
   <!-- ============================================================
-       JAVASCRIPT
+       SCRIPTS
        ============================================================ -->
-  <script>
-    // ============================================================
-    // 1. NAVBAR: aggiunge ombra allo scroll
-    // ============================================================
-    const navbar = document.getElementById('navbar');
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 20) {
-        navbar.classList.add('scrolled');
-      } else {
-        navbar.classList.remove('scrolled');
+  <script type="importmap">
+    {
+      "imports": {
+        "three": "https://unpkg.com/three@0.160.0/build/three.module.js",
+        "three/addons/": "https://unpkg.com/three@0.160.0/examples/jsm/"
       }
-    }, { passive: true });
+    }
+  </script>
+  <script type="module">
+    import * as THREE from 'three';
+    import { EffectComposer } from 'three/addons/postprocessing/EffectComposer.js';
+    import { RenderPass } from 'three/addons/postprocessing/RenderPass.js';
+    import { UnrealBloomPass } from 'three/addons/postprocessing/UnrealBloomPass.js';
 
-
-    // ============================================================
-    // 2. MENU MOBILE: toggle apertura/chiusura
-    // ============================================================
-    const menuBtn  = document.getElementById('menu-btn');
-    const mobileMenu = document.getElementById('mobile-menu');
-    const menuBars = document.querySelectorAll('.menu-bar');
-    let menuOpen = false;
-
-    menuBtn.addEventListener('click', () => {
-      menuOpen = !menuOpen;
-      mobileMenu.classList.toggle('hidden', !menuOpen);
-
-      // Animazione hamburger → X
-      if (menuOpen) {
-        menuBars[0].style.transform = 'translateY(8px) rotate(45deg)';
-        menuBars[1].style.opacity   = '0';
-        menuBars[2].style.transform = 'translateY(-8px) rotate(-45deg)';
+    // 1. Navbar Scroll Effect
+    window.addEventListener('scroll', () => {
+      const nav = document.getElementById('navbar');
+      if (window.scrollY > 50) {
+        nav.classList.add('scrolled', 'py-1');
+        nav.classList.remove('py-3');
       } else {
-        menuBars[0].style.transform = '';
-        menuBars[1].style.opacity   = '';
-        menuBars[2].style.transform = '';
+        nav.classList.remove('scrolled', 'py-1');
+        nav.classList.add('py-3');
       }
     });
 
-    function closeMobileMenu() {
-      menuOpen = false;
-      mobileMenu.classList.add('hidden');
-      menuBars[0].style.transform = '';
-      menuBars[1].style.opacity   = '';
-      menuBars[2].style.transform = '';
-    }
+    // 2. Mobile Menu Toggle
+    const menuBtn = document.getElementById('mobile-menu-button');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn.addEventListener('click', () => {
+      mobileMenu.classList.toggle('hidden');
+    });
 
-
-    // ============================================================
-    // 3. SCROLL REVEAL: animazione elementi al scroll
-    // ============================================================
+    // 3. Scroll Reveal Animation
     const revealElements = document.querySelectorAll('.reveal');
-
-    const revealObserver = new IntersectionObserver((entries) => {
-      entries.forEach((entry, i) => {
-        if (entry.isIntersecting) {
-          // Ritardo progressivo per gli elementi nella stessa griglia
-          setTimeout(() => {
-            entry.target.classList.add('visible');
-          }, i * 80);
-          revealObserver.unobserve(entry.target);
+    const revealOnScroll = () => {
+      revealElements.forEach(el => {
+        const rect = el.getBoundingClientRect();
+        if (rect.top < window.innerHeight * 0.85) {
+          el.classList.add('visible');
         }
       });
-    }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
+    };
+    window.addEventListener('scroll', revealOnScroll);
+    window.addEventListener('load', revealOnScroll);
 
-    revealElements.forEach(el => revealObserver.observe(el));
-
-
-    // ============================================================
-    // 4. FORM: validazione e feedback visivo
-    // ============================================================
-    const form        = document.getElementById('contact-form');
-    const formSuccess = document.getElementById('form-success');
-
+    // 4. Contact Form Success Simulation
+    const form = document.getElementById('contact-form');
+    const successMsg = document.getElementById('form-success');
     form.addEventListener('submit', (e) => {
       e.preventDefault();
-
-      const nome     = document.getElementById('nome').value.trim();
-      const telefono = document.getElementById('telefono').value.trim();
-      const messaggio = document.getElementById('messaggio').value.trim();
-      const privacy  = document.getElementById('privacy').checked;
-
-      if (!nome || !telefono || !messaggio || !privacy) {
-        // Evidenzia i campi vuoti
-        [document.getElementById('nome'), document.getElementById('telefono'), document.getElementById('messaggio')].forEach(input => {
-          if (!input.value.trim()) {
-            input.style.borderColor = '#EF4444';
-            input.addEventListener('input', () => { input.style.borderColor = ''; }, { once: true });
-          }
-        });
-        if (!privacy) {
-          document.getElementById('privacy').style.outline = '2px solid #EF4444';
-        }
-        return;
-      }
-
-      // Simula invio (qui puoi integrare Formspree, EmailJS, ecc.)
-      const btn = form.querySelector('button[type="submit"]');
-      btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Invio in corso...';
-      btn.disabled = true;
-
+      form.classList.add('opacity-50', 'pointer-events-none');
       setTimeout(() => {
-        form.style.display = 'none';
-        formSuccess.classList.remove('hidden');
+        form.reset();
+        form.classList.add('hidden');
+        successMsg.classList.remove('hidden');
       }, 1500);
     });
 
+    // 5. Lightning Effect Integration
+    (() => {
+      const container = document.getElementById('lightning-container');
+      if (!container) return;
 
-    // ============================================================
-    // 5. ACTIVE NAV LINK: evidenzia la sezione corrente
-    // ============================================================
-    const sections = document.querySelectorAll('section[id]');
-    const navLinks = document.querySelectorAll('nav a[href^="#"]');
+      const scene = new THREE.Scene();
+      scene.background = new THREE.Color(0x050510);
+      const camera = new THREE.PerspectiveCamera(60, container.clientWidth / container.clientHeight, 0.1, 1000);
+      camera.position.set(0, 0, 8);
 
-    const sectionObserver = new IntersectionObserver((entries) => {
-      entries.forEach(entry => {
-        if (entry.isIntersecting) {
-          navLinks.forEach(link => {
-            link.classList.remove('text-brand-yellow');
-            if (link.getAttribute('href') === '#' + entry.target.id) {
-              link.classList.add('text-brand-yellow');
-            }
-          });
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.toneMapping = THREE.ACESFilmicToneMapping;
+      renderer.toneMappingExposure = 1.5;
+      container.appendChild(renderer.domElement);
+
+      // Post-processing bloom
+      const composer = new EffectComposer(renderer);
+      composer.addPass(new RenderPass(scene, camera));
+      const bloomPass = new UnrealBloomPass(
+        new THREE.Vector2(container.clientWidth, container.clientHeight),
+        2.5, 0.4, 0.1
+      );
+      composer.addPass(bloomPass);
+
+      // Lightning bolt generation
+      function generateBoltPoints(start, end, generations, maxOffset) {
+        let points = [start.clone(), end.clone()];
+        for (let gen = 0; gen < generations; gen++) {
+          const newPoints = [points[0].clone()];
+          for (let i = 0; i < points.length - 1; i++) {
+            const mid = new THREE.Vector3().lerpVectors(points[i], points[i + 1], 0.5);
+            const offset = maxOffset / Math.pow(2, gen);
+            mid.x += (Math.random() - 0.5) * offset;
+            mid.y += (Math.random() - 0.5) * offset;
+            mid.z += (Math.random() - 0.5) * offset * 0.3;
+            newPoints.push(mid);
+            newPoints.push(points[i + 1].clone());
+          }
+          points = newPoints;
         }
+        return points;
+      }
+
+      function createBoltMesh(points, width, color, opacity) {
+        const curve = new THREE.CatmullRomCurve3(points);
+        const tubeGeo = new THREE.TubeGeometry(curve, points.length * 4, width, 6, false);
+        const mat = new THREE.MeshBasicMaterial({
+          color: color,
+          transparent: true,
+          opacity: opacity,
+          blending: THREE.AdditiveBlending,
+          depthWrite: false,
+        });
+        return new THREE.Mesh(tubeGeo, mat);
+      }
+
+      const boltGroup = new THREE.Group();
+      scene.add(boltGroup);
+
+      let timer = 0;
+      let flashIntensity = 0;
+      const boltStart = new THREE.Vector3(0, 5, 0);
+      const boltEnd = new THREE.Vector3(0, -5, 0);
+
+      const impactSphere = new THREE.Mesh(
+        new THREE.SphereGeometry(0.3, 16, 16),
+        new THREE.MeshBasicMaterial({ color: 0x88ccff, transparent: true, opacity: 0, blending: THREE.AdditiveBlending })
+      );
+      scene.add(impactSphere);
+
+      function regenerateBolt() {
+        while (boltGroup.children.length) {
+          const child = boltGroup.children[0];
+          child.geometry.dispose();
+          child.material.dispose();
+          boltGroup.remove(child);
+        }
+
+        const endVariation = new THREE.Vector3((Math.random() - 0.5) * 1.5, boltEnd.y, (Math.random() - 0.5) * 0.5);
+        const mainPoints = generateBoltPoints(boltStart, endVariation, 6, 3.0);
+        
+        boltGroup.add(createBoltMesh(mainPoints, 0.015, 0xffffff, 1.0));
+        boltGroup.add(createBoltMesh(mainPoints, 0.05, 0x88bbff, 0.7));
+        boltGroup.add(createBoltMesh(mainPoints, 0.15, 0x4477ff, 0.3));
+
+        const numBranches = Math.floor(Math.random() * 3) + 2;
+        for (let b = 0; b < numBranches; b++) {
+          const t = Math.random() * 0.7 + 0.1;
+          const idx = Math.floor(t * (mainPoints.length - 1));
+          const branchOrigin = mainPoints[idx].clone();
+          const branchDir = new THREE.Vector3((Math.random() - 0.5) * 2, (Math.random() - 0.5), (Math.random() - 0.5));
+          const branchPts = generateBoltPoints(branchOrigin, branchOrigin.clone().add(branchDir.normalize().multiplyScalar(Math.random() * 2 + 0.5)), 4, 1.0);
+          boltGroup.add(createBoltMesh(branchPts, 0.008, 0xffffff, 0.8));
+          boltGroup.add(createBoltMesh(branchPts, 0.04, 0x6699ff, 0.4));
+        }
+
+        flashIntensity = 1.0;
+        impactSphere.position.copy(endVariation);
+      }
+
+      const clock = new THREE.Clock();
+      function animate() {
+        const delta = clock.getDelta();
+        timer += delta;
+        if (timer > 0.1 + Math.random() * 0.1) {
+          timer = 0;
+          regenerateBolt();
+        }
+
+        flashIntensity *= 0.85;
+        impactSphere.material.opacity = flashIntensity * 0.9;
+        impactSphere.scale.setScalar(1 + flashIntensity * 2);
+        boltGroup.visible = flashIntensity > 0.05;
+        bloomPass.strength = 1.5 + flashIntensity * 2.0;
+
+        composer.render();
+        requestAnimationFrame(animate);
+      }
+      requestAnimationFrame(animate);
+
+      window.addEventListener('resize', () => {
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        composer.setSize(container.clientWidth, container.clientHeight);
       });
-    }, { threshold: 0.4 });
-
-    sections.forEach(section => sectionObserver.observe(section));
+    })();
   </script>
-
 </body>
 </html>
